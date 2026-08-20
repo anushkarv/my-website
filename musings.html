@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musings and Updates — Anushka Rajasekhar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3ead9; --bg-soft:#ece0c9; --card:#faf5e9; --line: rgba(60,50,35,0.12);
+  --text:#3a3226; --text-dim:#8a7d68; --sun:#f4a93b; --outline:#2e2820; --accent:#3f7a34;
+  --ocean:#3ea8d8; --land:#6fbf5a; --land-deep:#3f7a34;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{ background:var(--bg); color:var(--text); font-family:'Playfair Display', serif; min-height:100%; display: flex; flex-direction: column; }
+a{ color:inherit; text-decoration:none; }
+
+/* ---- Nav (Matches Home Layout) ---- */
+.nav{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 5vw; background:rgba(243,234,217,0.88); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand-mark{ display:flex; flex-direction:column; align-items:flex-start; line-height:1; }
+.brand-mark .initials{
+  font-family:'Playfair Display', serif; font-style: italic; font-weight:500; font-size:28px;
+  color:var(--outline); letter-spacing:-0.03em;
+}
+.brand-mark .shooting-star{ width:26px; height:14px; margin-top:3px; margin-left:1px; }
+
+.tabs{ display:flex; align-items:center; gap:26px; }
+.tabs .sun-link{ display:flex; align-items:center; }
+.tabs .sun-link svg{ width:34px; height:34px; display:block; }
+.tabs a{ font-family:'Playfair Display', serif; font-weight:600; font-size:14px; color:var(--outline); position:relative; padding-bottom:2px; transition:color 0.2s ease; }
+.tabs a:hover, .tabs a.active{ color:var(--accent); }
+@media (max-width:560px){ .tabs{ gap:16px; } }
+
+/* ---- Page Layout ---- */
+.page{ max-width:680px; margin:0 auto; padding:64px 24px 100px; flex: 1; }
+.page h1{ font-family:'Playfair Display', serif; font-weight:500; font-size:clamp(28px,5vw,42px); line-height:1.1; margin-bottom:22px; color: var(--outline); }
+.body-copy p{ color:var(--text-dim); font-size:15.5px; line-height:1.8; margin-bottom:18px; max-width:600px; }
+
+.topic{ margin-top:52px; }
+.topic-head{ margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.topic-head h2{ font-family:'Playfair Display', serif; font-weight:500; font-size:23px; }
+
+.entry-list{ margin-top:6px; }
+.entry{ padding:20px 0; border-bottom:1px solid var(--line); }
+.entry:last-child{ border-bottom:none; }
+.entry .tag{ font-family:'Playfair Display', serif; font-weight:600; font-size:11px; color:var(--accent); letter-spacing:0.04em; text-transform:uppercase; }
+.entry h3{ font-weight:600; font-size:16.5px; margin:8px 0 8px; }
+.entry p{ color:var(--text-dim); font-size:14.5px; line-height:1.75; max-width:600px; }
+
+.empty-state{ margin-top:12px; padding:28px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.empty-state p{ color:var(--text-dim); font-size:14.5px; line-height:1.7; max-width:520px; }
+
+.update-banner{
+  display:flex; align-items:center; gap:26px;
+  padding:30px 32px; background:var(--card); border:1px solid var(--line);
+  border-radius:18px; margin-bottom:8px;
+}
+.update-earth{ flex-shrink:0; }
+.update-earth svg{ width:78px; height:78px; display:block; }
+.update-copy h2{ font-family:'Playfair Display', serif; font-weight:500; font-size:20px; margin-bottom:8px; color: var(--outline); }
+.update-copy .wave{ width:110px; height:12px; display:block; margin-bottom:10px; }
+.update-copy p{ color:var(--text-dim); font-size:14.5px; line-height:1.7; }
+@media (max-width:560px){
+  .update-banner{ flex-direction:column; text-align:center; gap:16px; }
+  .update-copy .wave{ margin-left:auto; margin-right:auto; }
+}
+
+.gallery{ margin-top:64px; }
+.gallery-head{ margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.gallery-head h2{ font-family:'Playfair Display', serif; font-weight:500; font-size:23px; }
+.gallery-head p{ color:var(--text-dim); font-size:14px; margin-top:8px; }
+.gallery-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:24px; margin-top:20px;
+}
+.gallery-photo{
+  aspect-ratio:4/3; border-radius:12px; overflow:hidden;
+  background:var(--card); border:1px solid var(--line);
+}
+.gallery-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.gallery-placeholder{
+  display:flex; width:100%; height:100%; align-items:center; justify-content:center;
+  background:var(--bg-soft);
+}
+.gallery-placeholder svg{ width:32px; height:32px; opacity:0.35; }
+figure.gallery-item{ margin:0; }
+figcaption{
+  margin-top:10px; font-size:13px; color:var(--text-dim); text-align:center; line-height:1.5;
+}
+
+.articles{ margin-top:56px; }
+.articles-head{ margin-bottom:8px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.articles-head h2{ font-family:'Playfair Display', serif; font-weight:500; font-size:23px; color: var(--outline); }
+.article-item{ padding:26px 0; border-bottom:1px solid var(--line); }
+.article-item:last-child{ border-bottom:none; }
+.article-item .date{ font-size:12px; color:var(--accent); font-weight:600; letter-spacing:0.03em; }
+.article-item h3{ font-weight:600; font-size:17px; margin:8px 0 8px; }
+.article-item p{ color:var(--text-dim); font-size:14.5px; line-height:1.75; max-width:600px; }
+
+/* ---- Footer (Matches Home Design) ---- */
+.footer-signature {
+  text-align: center;
+  padding: 35px 20px;
+  background: #ded7c8;
+  color: #8a7d68;
+  font-size: 13.5px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.04em;
+  border-top: 1px solid rgba(60,50,35,0.08);
+}
+.footer-signature a {
+  color: #736855;
+  transition: color 0.2s;
+}
+.footer-signature a:hover {
+  color: var(--outline);
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand-mark" href="index.html">
+    <span class="initials">AR</span>
+    <svg class="shooting-star" viewBox="0 0 30 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,14 Q11,10 17,6" stroke="var(--outline)" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.55"/>
+      <path d="M23,1 L24.6,5.8 L29,7.3 L24.6,8.8 L23,13.5 L21.4,8.8 L17,7.3 L21.4,5.8 Z" fill="var(--sun)" stroke="var(--outline)" stroke-width="0.9"/>
+    </svg>
+  </a>
+  <nav class="tabs">
+    <a class="sun-link" href="index.html">
+      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="var(--outline)" stroke-width="2" stroke-linecap="round">
+          <line x1="22" y1="2" x2="22" y2="8"/><line x1="22" y1="36" x2="22" y2="42"/>
+          <line x1="2" y1="22" x2="8" y2="22"/><line x1="36" y1="22" x2="42" y2="22"/>
+          <line x1="7.5" y1="7.5" x2="11.5" y2="11.5"/><line x1="32.5" y1="32.5" x2="36.5" y2="36.5"/>
+          <line x1="7.5" y1="36.5" x2="11.5" y2="32.5"/><line x1="32.5" y1="11.5" x2="36.5" y2="7.5"/>
+        </g>
+        <circle cx="22" cy="22" r="13" fill="var(--sun)" stroke="var(--outline)" stroke-width="2"/>
+        <path d="M15,20 Q15,17 17,17 Q19,17 19,20" fill="none" stroke="var(--outline)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M25,20 Q25,17 27,17 Q29,17 29,20" fill="none" stroke="var(--outline)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M16,25 Q22,30 28,25" fill="none" stroke="var(--outline)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="research.html">Research</a>
+    <a href="musings.html" class="active">Musings</a>
+  </nav>
+</header>
+
+<main class="page">
+  <h1>Musings and Updates</h1>
+
+  <div class="update-banner">
+    <div class="update-earth">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="var(--ocean)" stroke="var(--outline)" stroke-width="3"/>
+        <path d="M20,32 Q12,22 30,18 Q48,12 56,26 Q62,34 50,42 Q58,50 46,58 Q32,64 22,54 Q10,48 20,32 Z" fill="var(--land)" stroke="var(--land-deep)" stroke-width="2"/>
+        <path d="M64,60 Q60,52 72,48 Q84,44 88,56 Q90,68 78,70 Q68,72 64,60 Z" fill="var(--land)" stroke="var(--land-deep)" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="update-copy">
+      <h2>What I've Been Up To Recently</h2>
+      <svg class="wave" viewBox="0 0 120 14" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,7 Q15,0 30,7 T60,7 T90,7 T120,7" fill="none" stroke="var(--ocean)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p>In this past year, I am so grateful to have met so many incredible people across physics, seismology, and planetary science disciplines! I gave a talk on ground-motions in the Mendocino Fracture Zone at the SSA 2026 conference in Pasadena, met so many inspiring young women at the APS CU*iP conference in Denver, and collaborated with other researchers at the CRESCENT ground motion modeling workshop in Eugene. I am grateful for my advisors at the U.S. Geological Survey and the APS organizers that helped fund me to attend these amazing opportunities. Over the summer, I began my internship with the Militzer group at UC Berkeley, conducting high-pressure computational materials research using quantum mechanical tools, and have enjoyed the rigorous physics based approaches the work entails. More updates to come!</p>
+    </div>
+  </div>
+  
+  <div class="articles">
+    <div class="articles-head">
+      <h2>Notes &amp; Articles</h2>
+    </div>
+    <div class="empty-state">
+      <p>Nothing yet!</p>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="cuipfriends.jpeg" alt="Gallery photo 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>Last day of CU*iP 2026 in Denver</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="heds.jpeg" alt="Gallery photo 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>HEDS Summer School 2025 @ LLNL</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="kids.jpeg" alt="Gallery photo 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>Designed an experimental science camp for K-5!</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="cposter.jpeg" alt="Gallery photo 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>Poster on MFZ work</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="cosmos.jpeg" alt="Gallery photo 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>Volunteered and attended COSMOS Annual Meeting 2026</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="gallery-photo">
+          <img src="prelaw.jpg" alt="Gallery photo 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="24" rx="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><circle cx="14" cy="17" r="3" fill="none" stroke="var(--text-dim)" stroke-width="2"/><path d="M6,28 L15,20 L22,26 L28,19 L34,26" fill="none" stroke="var(--text-dim)" stroke-width="2"/></svg>
+          </div>
+        </div>
+        <figcaption>Running membership development back when I was prelaw!</figcaption>
+      </figure>
+    </div>
+  </div>
+</main>
+
+<footer class="footer-signature">
+  Anushka Rajasekhar &nbsp;|&nbsp; <a href="mailto:anushkarv@berkeley.edu">anushkarv@berkeley.edu</a>
+</footer>
+
+</body>
+</html>

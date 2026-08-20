@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Anushka Rajasekhar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3ead9; --bg-soft:#ece0c9; --card:#faf5e9; --line: rgba(60,50,35,0.12);
+  --text:#3a3226; --text-dim:#8a7d68; --sun:#f4a93b; --outline:#2e2820; --accent:#3f7a34;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{ background:var(--bg); color:var(--text); font-family:'Playfair Display', serif; min-height:100%; display: flex; flex-direction: column; }
+a{ color:inherit; text-decoration:none; }
+
+/* ---- Nav (Matches Home & Musings Layout Exactly) ---- */
+.nav{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 5vw; background:rgba(243,234,217,0.88); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.brand-mark{ display:flex; flex-direction:column; align-items:flex-start; line-height:1; }
+.brand-mark .initials{
+  font-family:'Playfair Display', serif; font-style: italic; font-weight:500; font-size:28px;
+  color:var(--outline); letter-spacing:-0.03em;
+}
+.brand-mark .shooting-star{ width:26px; height:14px; margin-top:3px; margin-left:1px; }
+
+.tabs{ display:flex; align-items:center; gap:26px; }
+.tabs .sun-link{ display:flex; align-items:center; }
+.tabs .sun-link svg{ width:34px; height:34px; display:block; }
+.tabs a{ 
+  font-family:'Playfair Display', serif; font-weight:600; font-size:14px; 
+  color:var(--outline); position:relative; padding-bottom:2px; 
+  transition:color 0.2s ease; 
+}
+.tabs a:hover, .tabs a.active{ color:var(--accent); }
+@media (max-width:560px){ .tabs{ gap:16px; } }
+
+/* ---- Page Layout ---- */
+.page{ max-width:680px; margin:0 auto; padding:64px 24px 100px; flex: 1; width: 100%; }
+.page h1{ font-family:'Playfair Display', serif; font-weight:500; font-size:clamp(28px,5vw,42px); line-height:1.1; margin-bottom:22px; color: var(--outline); }
+.body-copy p{ color:var(--text-dim); font-size:15.5px; line-height:1.8; margin-bottom:18px; max-width:600px; }
+
+.topic{ margin-top:52px; }
+.topic-head{ margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.topic-head h2{ font-family:'Playfair Display', serif; font-weight:500; font-size:23px; color: var(--outline); }
+
+.entry-list{ margin-top:6px; }
+.entry{ padding:20px 0; border-bottom:1px solid var(--line); }
+.entry:last-child{ border-bottom:none; }
+.entry .tag{ font-family:'Playfair Display', serif; font-weight:600; font-size:11px; color:var(--accent); letter-spacing:0.04em; text-transform:uppercase; }
+.entry h3{ font-weight:600; font-size:16.5px; margin:8px 0 8px; color: var(--outline); }
+.entry p{ color:var(--text-dim); font-size:14.5px; line-height:1.75; max-width:600px; }
+
+/* ---- Responsive Video & Image Blocks ---- */
+.video-container {
+  position: relative;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 20px 0 16px;
+  aspect-ratio: 16 / 9;
+}
+.video-container video, .video-container iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.image-container {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 20px 0 16px;
+}
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ---- Presentations / Bibliography Styles ---- */
+.presentation-section {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+}
+.presentation-section h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--outline);
+  margin-bottom: 14px;
+}
+.bibliography-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.bibliography-item {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding-left: 16px;
+  text-indent: -16px;
+}
+
+/* ---- Footer (Matches Home Design Exactly) ---- */
+.footer-signature {
+  text-align: center;
+  padding: 35px 20px;
+  background: #ded7c8;
+  color: #8a7d68;
+  font-size: 13.5px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.04em;
+  border-top: 1px solid rgba(60,50,35,0.08);
+}
+.footer-signature a {
+  color: #736855;
+  transition: color 0.2s;
+}
+.footer-signature a:hover {
+  color: var(--outline);
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand-mark" href="index.html">
+    <span class="initials">AR</span>
+    <svg class="shooting-star" viewBox="0 0 30 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1,14 Q11,10 17,6" stroke="var(--outline)" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.55"/>
+      <path d="M23,1 L24.6,5.8 L29,7.3 L24.6,8.8 L23,13.5 L21.4,8.8 L17,7.3 L21.4,5.8 Z" fill="var(--sun)" stroke="var(--outline)" stroke-width="0.9"/>
+    </svg>
+  </a>
+  <nav class="tabs">
+    <a class="sun-link" href="index.html">
+      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="var(--outline)" stroke-width="2" stroke-linecap="round">
+          <line x1="22" y1="2" x2="22" y2="8"/><line x1="22" y1="36" x2="22" y2="42"/>
+          <line x1="2" y1="22" x2="8" y2="22"/><line x1="36" y1="22" x2="42" y2="22"/>
+          <line x1="7.5" y1="7.5" x2="11.5" y2="11.5"/><line x1="32.5" y1="32.5" x2="36.5" y2="36.5"/>
+          <line x1="7.5" y1="36.5" x2="11.5" y2="32.5"/><line x1="32.5" y1="11.5" x2="36.5" y2="7.5"/>
+        </g>
+        <circle cx="22" cy="22" r="13" fill="var(--sun)" stroke="var(--outline)" stroke-width="2"/>
+        <path d="M15,20 Q15,17 17,17 Q19,17 19,20" fill="none" stroke="var(--outline)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M25,20 Q25,17 27,17 Q29,17 29,20" fill="none" stroke="var(--outline)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M16,25 Q22,30 28,25" fill="none" stroke="var(--outline)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="research.html" class="active">Research</a>
+    <a href="musings.html">Musings</a>
+  </nav>
+</header>
+
+<main class="page">
+  <h1>Research</h1>
+  
+  <!-- Topic 1: High-Pressure Materials -->
+  <div class="topic">
+    <div class="topic-head"><h2>High-pressure materials</h2></div>
+    <div class="body-copy">
+      <p>High energy density science (HEDS) is an interdisciplinary field that spans throughout sub-fields of physics, material science, and planetary science.
+        Understanding how materials behave at high-pressure and high-temperature is crucial for developing planetary interior models, superconductor research, and fusion energy.
+      </p>
+    </div>
+
+    <div class="video-container">
+      <video controls>
+        <source src="2phase.mov" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="entry-list">
+      <div class="entry">
+        <span class="tag">Gold</span>
+        <h3>Melting Curve of Gold</h3>
+        <p>Melting curve calculations of gold at high-pressure is crucial as the material is often used as a pressure standard in extreme condition experiments, establishing accurate melting curves 
+          that can help resolve thermal structures of terrestrial planets and aid in capsule design for fusion research. 
+          Numerous shock compression and laser-driven diamond anvil cell experiments have explored phase behavior of fcc and bcc gold up to 2 TPa. 
+          Due to gold's fcc and bcc stability across large pressure regimes, experimental melting studies would require an immense amount of heat in order to accurately calculate the melting curve of Gold above 1 TPa. 
+          Computational methods such as DFT-MD are able to allow for a more feasible calculation of melting lines under extreme conditions. Using first-principles ab-initio DFT-MD simulations, 
+          I employ a heat-until-it-melts (HUM) approach to investigate the melting behavior of fcc and bcc gold above 1 TPa and perform static DFT calculations to model the equation-of-state (EoS) of Gold.</p>
+      </div>
+      <div class="entry">
+        <span class="tag">Sulfur</span>
+        <h3>Melting Curve and Phase Diagram of Sulfur</h3>
+        <p>Sulfur is relevant to inner-core crystallization and volcanism, yet its melting curve has been measured up to 65 GPa. 
+          Sulfur exhibits complex behavior between 0-120 GPa, undergoing amorphous, metallic and superconducting states, and is predicted to undergo phase transitions similar to other group VI elements: (1) base-centered orthorhombic around 90 GPa, (2) &beta;-Po rhombohedral around 212 GPa, to (3) bcc around 550 GPa. 
+          Using DFT-MD, I construct and simulate various sulfur crystal phases to calculate 
+          the melting curve using the HUM approach. </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Topic 2: Seismology -->
+  <div class="topic">
+    <div class="topic-head"><h2>Seismology</h2></div>
+    <div class="body-copy">
+      <p>I work on observational earthquake science projects, interested in ground-motion and source physics projects. 
+        I am passionate about working on seismology projects with more 
+        direct applications toward helping people and communities in earthquake prone regions.</p>
+    </div>
+
+    <div class="video-container">
+      <video controls>
+        <source src="Mendocino.mov" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="entry-list">
+      <div class="entry">
+        <span class="tag">Ground-motion</span>
+        <h3>Ground Motions in Cape Mendocino</h3>
+        <p>In December of 2024 a M7.0 earthquake off-shore Cape Mendocino produced strong ground-motions and shaking that was felt from southern Oregon to south of the Bay Area. Despite being California's most seismically active region, it is unclear how the observed ground motions compare to those from typical California crustal earthquakes, as well as subduction zone events. For the past year, I have worked with the U.S. Geological Survey Earthquake Science Center to investigate over 486 earthquakes of M3.0+, with 23 M5.0+ events to improve understanding of regional site and path effects. Using NGA-West2 and NGA-Subduction ground motion models, we investigate trends in peak ground acceleration and velocity, 
+          and conduct robust analysis to analyze the source, site, and path contributions. We consider if MTJ earthquakes are more closely 
+          modeled with crustal or subduction zone GMMs, and whether this necessitates more physically precise models or alterations to 
+          current models for better hazard characterization in the MTJ region. Using 3D fault modeling, 
+          we characterize the MFZ into 6 regions of similar geology, in order to more rigorously investigate potential 
+          relationships between the earthquake source and model performance. 
+        </p>
+
+        <div class="image-container">
+          <img src="focalmech.jpeg" alt="3D Fault Model Based Characterization of MFZ">
+        </div>
+
+        <!-- Cleaned & Downsized Presentations Sub-Section -->
+        <div class="presentation-section">
+          <h4>Selected Presentations</h4>
+          <div class="bibliography-list">
+            <p class="bibliography-item">
+              <strong>Seismological Society of America</strong>, Annual Meeting, Pasadena, CA, April 2026. Rajasekhar Anushka; Parker, Grace; Hirakawa, Evan; Baltay, Annemarie. “Comprehensive ground motion analysis in the Mendocino Fracture Zone” (talk).
+            </p>
+            <p class="bibliography-item">
+              <strong>American Physical Society</strong>, Conference for Undergraduate Women and Gender Minorities in Physics Poster Session, Denver, CO, March 2026. Rajasekhar, Anushka; Parker, Grace; Hirakawa, Evan; Baltay, Annemarie. “Ground Motion Variability Across Crustal and Subduction Ground-Motion Models in the Mendocino Fracture Zone” (poster).
+            </p>
+            <p class="bibliography-item">
+              <strong>Northern California Earthquake Hazards Workshop</strong> Thunder Talks, Moffett Field, California, February 2026. Rajasekhar, Anushka; Parker, Grace; Hirakawa, Evan; Baltay, Annemarie. “Understanding the Mendocino Fracture Zone: Evaluating Ground Motion Variability over the Last Two Decades” (mini-talk).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Topic 3: Personal Projects -->
+  <div class="topic">
+    <div class="topic-head"><h2>Personal Projects</h2></div>
+    
+    <div class="entry-list">
+      <div class="entry">
+        <span class="tag">Fractals</span>
+        <h3>REM Sleep Driven Newtonian Fractals</h3>
+        
+        <div class="image-container">
+          <img src="remfractal.jpeg" alt="REM Driven Fractal Image">
+        </div>
+
+        <p>REM is a unique brain state with interesting features in EEG waves.
+          How can we simulate these features in a newtonian fractal? For a class project, 
+          we were asked to design a simulation of any topic of interest. Sleep patterns have 
+          always been interesting to me, and processing most wave data is similar across 
+          seismic waves, sound waves, and even brain waves! I extracted band powers from the EEG 
+          waves using a Morlet wavelet transform, which gave me alpha, beta, theta, and delta. I 
+          developed a mapping framework by which I correlated the different band-powers to visual changes like 
+          zoom, geometric morphing, warping, brightness, and color changes. 
+        </p>
+  
+        <div class="video-container">
+          <video controls>
+            <source src="animation1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer-signature">
+  Anushka Rajasekhar &nbsp;|&nbsp; <a href="mailto:anushkarv@berkeley.edu">anushkarv@berkeley.edu</a>
+</footer>
+
+</body>
+</html>
